@@ -237,12 +237,12 @@ buzz()
 // });
 
 // console.log(newBanana.shipped('Alaska'));
-// console.log(newKiwi.shipped('Colorado'));
+// console.log(nnameewKiwi.shipped('Colorado'));
 // console.log(newBanana.checkIfMonkeysLikeIt());
 // console.log(newKiwi.checkIfFuzzy());
 // console.log(newBanana.calculateCals());
 // console.log(newKiwi.calculateCals());
-
+// name
 //Converted to Classes
 // function Fruit(attrs) {
 //     this.type = attrs.type;
