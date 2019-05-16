@@ -267,18 +267,7 @@ class Fruit {
 
 }
 
-// Fruit.prototype.shipped = function (destination) {
-//     console.log(`Shipping ${this.name} to ${destination}`);
-// };
 
-// Fruit.prototype.calculateCals = function () {
-//     console.log(`Calories in ${this.name} are ${this.calories * 200}`);
-// };
-
-// function Banana(bananaAttrs) {
-//     Parent.call(this, bananaAttrs);
-//     this.doMonkeysLikeIt = bananaAttrs.doMonkeysLikeIt;
-// }
 
 class Banana extends Fruit {
     constructor(bananaAttrs) {
@@ -297,25 +286,12 @@ class Banana extends Fruit {
 }
 
 
-// Banana.prototype = Object.create(Fruit.prototype);
 
-// Banana.prototype.checkIfMonkeysLikeIt = function () {
-//     if (this.doMonkeysLikeIt) {
-//         return true;
-//     } else {
-//         return false;
-//     }
-// };
-
-// function Kiwi(kiwiAttrs) {
-//     Fruit.call(this, kiwiAttrs);
-//     this.isFuzzy = kiwiAttrs.isFuzzy;
-// }
 class Kiwi extends Fruit {
     constructor(kiwiAttrs) {
         super(kiwiAttrs);
         this.isFuzzy = kiwiAttrs.isFuzzy;
-        
+
     }
     checkIfFuzzy() {
         if (this.isFuzzy) {
@@ -326,15 +302,7 @@ class Kiwi extends Fruit {
     }
 }
 
-// Kiwi.prototype = Object.create(Fruit.prototype);
 
-// Kiwi.prototype.checkIfFuzzy = function () {
-//     if (this.isFuzzy) {
-//         return true;
-//     } else {
-//         return false;
-//     }
-// }
 
 const newBanana = new Banana({
     doMonkeysLikeIt: true,
@@ -358,3 +326,81 @@ console.log(newBanana.checkIfMonkeysLikeIt());
 console.log(newKiwi.checkIfFuzzy());
 console.log(newBanana.calculateCals());
 console.log(newKiwi.calculateCals());
+
+/******************************************************************************************
+ * Josh Knells Lecture JavaScript IV
+ * 'Automagically' hahaha
+ * = assign the value of NOT equals
+ * new = new binding of this keyword
+ * {} = Object literal
+ */
+
+
+
+/******************************************************************************************************
+ * Dan Sherman's Lecture
+ * classes
+ * Converting constructors into Classes
+ *   */
+
+//  function Parent(attributes) {
+//     this.age = attributes.age;
+//     this.location = attributes.location;
+//     this.name = attributes.name;
+//     this.phrase = attributes.phrase;
+//   }
+//Rewrite code into new syntax below
+class Parent {
+    constructor(attributes) {
+        this.age = attributes.age;
+        this.location = attributes.location;
+        this.name = attributes.name;
+        this.phrase = attributes.phrase;
+    }
+
+    speak() {
+        return `${this.name} says ${this.phrase}`;
+    }
+}
+
+
+// Parent.prototype.speak = function () {
+//     return `${this.name} says ${this.phrase}`;
+// }
+
+// function Child(attributes) {
+//     Parent.call(this, attributes);
+//     this.toy = attributes.toy;
+
+// }
+
+class Child extends Parent {
+    constructor(childAttributes){
+        super(childAttributes)
+
+    };
+}
+
+const Fred = new Parent({
+    age: 35,
+    name: 'Fred',
+    location: 'Bedrock',
+    phrase: 'Yabba Dabba Do'
+
+})
+
+Child.prototype = Object.create(Parent.prototype);
+Child.prototype.play = function () {
+    return `${this.name} plays with ${this.toy}`
+}
+
+const pebbles = new Child({
+    age: 2,
+    name: 'Pebbles',
+    location: 'Bedrock',
+    phrase: 'MA MA',
+    toy: 'rock'
+})
+
+console.log(pebbles.play())
+console.log(pebbles.speak())
