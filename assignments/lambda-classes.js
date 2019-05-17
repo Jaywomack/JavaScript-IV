@@ -24,7 +24,7 @@ class Instructor extends Person {
         console.log(`${student} receives a perfect score on ${subject}`)
     }
     instructorGrade() {
-        return Math.floor(Math.random() * 100 + 1)
+        return Math.floor(Math.random() * 60 + 1)
     }
 }
 
@@ -50,8 +50,10 @@ class Student extends Person {
     grade() {
         return Math.floor(Math.random() * 100 + 1)
     }
+    
     graduate() {
-        if ((jay.grade - dan.instructorGrade) > 70) {
+        if (jay.grade() - dan.instructorGrade() > 30) {
+            console.log(jay.grade())
             return `${this.name} has graduated!`
         } else {
             return `${this.name} failed!`
